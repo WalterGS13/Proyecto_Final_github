@@ -20,14 +20,7 @@ def validacion_tarjeta():
     
     
     if card.validate_tarjeta(resultado, lenght) and card.validate_tipo_lenght(lenght):
-        tarjeta_tipo = int(card.get_numero_tarjeta()[0])
-        match tarjeta_tipo:
-            case 4:
-                messagebox.showinfo("Info", "Pago realizado con exito,  Pago hecho con VISA")
-            case 5:
-                messagebox.showinfo("Info", "Pago realizado con exito,  Pago hecho con MASTERCARD")
-            case _:
-                messagebox.showinfo("Info", "Error")
+        messagebox.showinfo("Info", "Pago realizado con exito")
     else:
         messagebox.showinfo("Info", "Tarjeta invalida")
 

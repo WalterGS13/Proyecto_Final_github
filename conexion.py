@@ -33,9 +33,9 @@ def buscar_cuenta(dpi):
         return(cuenta[0][0])
 
 # Busca mempresia por medio del dpi
-def buscar_membresia(dpi):
+def buscar_membresia(ban):
     if conexion.is_connected():
-        mycursor.execute("SELECT CATEGORIA FROM usuarios WHERE DPI = %s", (dpi,))
+        mycursor.execute("SELECT CATEGORIA FROM usuarios WHERE BAN = %s", (ban,))
         membresia = mycursor.fetchall()
 
         if mycursor.rowcount>0:

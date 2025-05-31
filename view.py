@@ -18,12 +18,20 @@ def comando_multiple1():
     card.set_numero_tarjeta(ttexto.get())
     lenght = card.get_tarjeta_lenght()
     if card.validate_tarjeta(resultado, lenght) and card.validate_tipo_lenght(lenght):
-        messagebox.showinfo("Info", "Pago realizado con exito")
+        tarjeta_tipo = int(card.get_numero_tarjeta()[0])
+        match tarjeta_tipo:
+            case 4:
+                messagebox.showinfo("Info", "Pago realizado con exito,  Pago hecho con VISA")
+            case 5:
+                messagebox.showinfo("Info", "Pago realizado con exito,  Pago hecho con MASTERCARD")
+            case _:
+                messagebox.showinfo("Info", "Error")
         
         crear_cuenta(DPI_entry.get(),nombre_entry.get(),edad_entry.get(), "Silver", random.randint(100000,999999))
         time.sleep(1)
-        suscripcion = str(buscar_membresia(DPI_entry.get()))
         data = str(buscar_cuenta(DPI_entry.get()))
+        suscripcion = str(buscar_membresia(data))
+        
         mensaje_de_bienvenida.configure(text=f"Gracias por suscribirse a la suscripcion {suscripcion}, su numero de cuenta es {data}")
     else:
         messagebox.showinfo("Info", "Tarjeta invalida") 
@@ -43,8 +51,9 @@ def comando_multiple2():
         
         crear_cuenta(DPI_entry.get(),nombre_entry.get(),edad_entry.get(), "Gold", random.randint(100000,999999))
         time.sleep(1)
-        suscripcion = str(buscar_membresia(DPI_entry.get()))
         data = str(buscar_cuenta(DPI_entry.get()))
+        suscripcion = str(buscar_membresia(data))
+        
         mensaje_de_bienvenida.configure(text=f"Gracias por suscribirse a la suscripcion {suscripcion}, su numero de cuenta es {data}")
     else:
         messagebox.showinfo("Info", "Tarjeta invalida") 
@@ -67,8 +76,9 @@ def comando_multiple3():
         
         crear_cuenta(DPI_entry.get(),nombre_entry.get(),edad_entry.get(), "Platinum", random.randint(100000,999999))
         time.sleep(1)
-        suscripcion = str(buscar_membresia(DPI_entry.get()))
         data = str(buscar_cuenta(DPI_entry.get()))
+        suscripcion = str(buscar_membresia(data))
+        
         mensaje_de_bienvenida.configure(text=f"Gracias por suscribirse a la suscripcion {suscripcion}, su numero de cuenta es {data}")
     else:
         messagebox.showinfo("Info", "Tarjeta invalida") 
